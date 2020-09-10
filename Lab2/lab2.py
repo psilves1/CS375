@@ -10,7 +10,7 @@ def randGraph(n, p):
     while(counter1 < n):
         counter2 = 0
         while(counter2 < n):
-            if(random.random() < p):
+            if(random.random() < p and not (counter1 == counter2)):          
                 arr[counter1][counter2] = 1
                 arr[counter2][counter1] = 1
             else:
@@ -21,24 +21,84 @@ def randGraph(n, p):
 
     return arr
 
-def vertCount(graph, t):
 
-    num = 0
+def bfs(graph, t):
+
+    source = []
+
+    rowVal = 0
+    columnVal = 0
 
     for row in graph:
-        for x in row:
-            num += x
-        if(num >= t):
-            return 1
-        num = 0
+        for column in row: 
+            if column == 1 and not (columnVal == rowVal):
+                source = [columnVal, rowVal]
+            columnVal += 1
 
-    return 0
+        columnVal = 0
+        rowVal += 1
 
-graph = randGraph(5, .5)
+    #source is good 
 
-for x in graph:
-    print (x)
+    queue = []
+    marked = []
+
+    queue.append(source)
+    marked.append(source)
+
+    while(len(queue) > 0):
+        
+        v = queue.pop()
+
+        if(v == []):
+            break
+
+        index = 0
+
+        for num in graph[v[1]]:
+            if([v[1], index] not in marked and num == 1):
+
+                marked.append([v[1], index])
+                queue.append([v[1], index])
+
+            index += 1
+
+        index = 0
+
+    return (len(marked)-(len(marked)-1)/2) >= t
 
 
-print("\n")
-print(vertCount(graph, 4))
+def generate(numOfGraphs=500, n=40):
+    
+    for num in range(2, 32, 2):
+        num = num / 10
+        p = num / n
+        #print(p)
+
+        x = 0
+        numOfGoodGraphs = 0
+
+        while(x < numOfGraphs):
+            graph = randGraph(n,p)
+            #print(graph)
+            if(bfs(graph, 30)):
+                numOfGoodGraphs += 1
+
+            x+= 1
+
+        print("For c = " + str(num) + ", " +  str(round(numOfGoodGraphs/numOfGraphs*100 , 3)) + "% meet the threshold")
+
+
+
+generate()
+
+"""
+
+graph = randGraph(4, .5)
+
+for n in graph:
+    print(n)
+
+print(bfs(graph, 2))
+
+"""
