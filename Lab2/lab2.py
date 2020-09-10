@@ -91,14 +91,3 @@ def generate(numOfGraphs=500, n=40):
 
 
 generate()
-
-"""
-
-graph = randGraph(4, .5)
-
-for n in graph:
-    print(n)
-
-print(bfs(graph, 2))
-
-"""
