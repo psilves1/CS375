@@ -22,10 +22,36 @@ def randGraph(n, p):
     return arr
 
 
+def findS(graph, marked):
+    
+    numOfIters = 0
+
+    while(numOfIters < len(graph[0]) *len(graph[0])):
+   
+        rowVal = 0
+        columnVal = 0
+
+        for row in graph:
+            for column in row: 
+                if column == 1 and not (columnVal == rowVal) and [columnVal, rowVal] not in marked:
+                    return [columnVal, rowVal]
+                columnVal += 1
+
+            columnVal = 0
+            rowVal += 1
+        numOfIters += 1
+
+    return [-1,-1]
+        
+
+        
+    
+
 def bfs(graph, t):
 
     source = []
 
+    """
     rowVal = 0
     columnVal = 0
 
@@ -37,11 +63,18 @@ def bfs(graph, t):
 
         columnVal = 0
         rowVal += 1
+    """
 
     #source is good 
 
+
     queue = []
     marked = []
+
+    source = findS(graph, marked)
+
+    if(source[0] == -1):
+        return -1
 
     queue.append(source)
     marked.append(source)
@@ -65,7 +98,30 @@ def bfs(graph, t):
 
         index = 0
 
-    return (len(marked)-(len(marked)-1)/2) >= t
+    return len(marked)#(len(marked)-(len(marked)-1)/2) >= t
+
+def findLargestComp(graph, t):
+
+    numOfEdges = 0
+
+    for c in graph:
+        for r in c: 
+            if(r == 1): 
+                numOfEdges += 1 
+
+    n = 0
+    largestCompSize = 0
+
+    while (n < numOfEdges):
+        temp = bfs(graph, t)
+        if(temp == -1):
+            return (largestCompSize-(largestCompSize-1)/2) >= t
+        n += temp
+        if(temp > largestCompSize):
+            largestCompSize = temp
+
+    return (largestCompSize-(largestCompSize-1)/2) >= t
+        
 
 
 def generate(numOfGraphs=500, n=40):
@@ -81,13 +137,12 @@ def generate(numOfGraphs=500, n=40):
         while(x < numOfGraphs):
             graph = randGraph(n,p)
             #print(graph)
-            if(bfs(graph, 30)):
+            if(findLargestComp(graph,30)):
                 numOfGoodGraphs += 1
 
             x+= 1
 
         print("For c = " + str(num) + ", " +  str(round(numOfGoodGraphs/numOfGraphs*100 , 3)) + "% meet the threshold")
-
 
 
 generate()
