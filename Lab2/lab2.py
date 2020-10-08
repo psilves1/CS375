@@ -41,10 +41,7 @@ def findS(graph, marked):
             rowVal += 1
         numOfIters += 1
 
-    return [-1,-1]
-        
-
-        
+    return [-1,-1] 
     
 
 def bfs(graph, t):
@@ -100,6 +97,7 @@ def bfs(graph, t):
 
     return len(marked)#(len(marked)-(len(marked)-1)/2) >= t
 
+
 def findLargestComp(graph, t):
 
     numOfEdges = 0
@@ -122,7 +120,6 @@ def findLargestComp(graph, t):
 
     return (largestCompSize-(largestCompSize-1)/2) >= t
         
-
 
 def generate(numOfGraphs=500, n=40):
     
