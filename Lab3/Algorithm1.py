@@ -6,7 +6,7 @@ Output: the k-th smallest element in A
 """
 
 def randomListSplit(arr, k):
-    
+
     v = random.randint(0, len(arr)-1)
 
     v = arr[v]
@@ -31,7 +31,9 @@ def randomListSplit(arr, k):
 
 
 A=[5, 14, 9, 9, 11, 6, 13, 6, 16, 9] 
-B=[1,2,3,4,5,6,7,8,9,10]
 
 print(randomListSplit(A,5))
-print(randomListSplit(B,5))
+
+C = [4, 16, 19, 9, 17, 2, 11, 16, 8, 16, 9, 14, 9, 11, 8, 13, 10, 9, 14, 17]
+
+print(randomListSplit(C,10))

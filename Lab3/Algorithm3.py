@@ -20,10 +20,10 @@ def partition(array, start, end):
 
     while True:
 
-        while pivot <= array[high] and high >= low:
+        while high >= low and pivot <= array[high] :
             high = high - 1
 
-        while pivot >= array[low] and high >= low:
+        while high >= low and pivot >= array[low]:
             low = low + 1
 
         if high >= low:
@@ -37,7 +37,10 @@ def partition(array, start, end):
 
 
 A=[5, 14, 9, 9, 11, 6, 13, 6, 16, 9] 
-B=[1,2,3,4,5,6,7,8,9,10]
+
 
 print(sortedSelection(A,5))
-print(sortedSelection(B,5))
+
+C = [4, 16, 19, 9, 17, 2, 11, 16, 8, 16, 9, 14, 9, 11, 8, 13, 10, 9, 14, 17]
+
+print(sortedSelection(C,10))
