@@ -58,9 +58,9 @@ def listSplit(arr, k):
 
 A=[5, 14, 9, 9, 11, 6, 13, 6, 16, 9] 
 
-print(listSplit(A,5))
+#print(listSplit(A,5))
 
 C = [4, 16, 19, 9, 17, 2, 11, 16, 8, 16, 9, 14, 9, 11, 8, 13, 10, 9, 14, 17]
 
-print(listSplit(C,10))
-
+# print(listSplit(C,10))
+# print(listSplit(C,3))
