@@ -50,6 +50,6 @@ def algo(arr1, arr2):
             return (maxLeft + minRight) / 2.0
 
 
-# arr1 = [2 ,  4 ,  5 ,  6 ,  7]
-# arr2 = [20 ,  21 ,  25 ,  30 ,  40]
-# print(algo(arr1 , arr2))
+arr1 = [2 ,  4 ,  5 ,  6 ,  7]
+arr2 = [20 ,  21 ,  25 ,  30 ,  40]
+print(algo(arr1 , arr2))

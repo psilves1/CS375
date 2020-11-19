@@ -7,9 +7,11 @@ def func1(arr, bottom, top) :
   
     mid = int((bottom + top) / 2) #mid point
   
-    retVal1 = func1(arr,bottom,mid) #recursion on list half the size
-    retVal2 = func1(arr, mid + 1, top) #recursion on list half the size
-    retVal3 = func2(arr, bottom, mid, top) 
+    retVal1 = func1(arr,bottom,mid) #recursion on list half the size n/2
+    retVal2 = func1(arr, mid + 1, top) #recursion on list half the size  n/2
+    retVal3 = func2(arr, bottom, mid, top) #n 
+
+    # T(n) = n + 2 * T(n/2)
 
     maxRetVal = max(retVal1, retVal2, retVal3)
 

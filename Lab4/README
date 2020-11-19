@@ -1,0 +1,14 @@
+Question 1:
+
+For question 1 we need to look at n-1 possiblities n times. This means we will have 
+O(n^2) time complexity for this algorithm
+
+Question 2:
+
+For question 2 part 1 we have a part of the code that takes O(n*log(n)) on average (the sort) and O(n^2)
+in the worst case. We have another part that takes O(n*v) time. This means for part 1 our average 
+case is O(n*v). This means on average we will have O(n*v + n*log(n)), but at worst we will have
+O(n^2) time complexity
+
+For question 2 part 1 we will have an O(n*V) time complexity. We know this since we traverse through
+an n*v array in constant time. 
